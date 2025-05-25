@@ -12,7 +12,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('article.index');
+        $articles = Article::orderBy('created_at', 'desc')->simplePaginate(4);
+        
+        return view('article.index', compact('articles'));
+        
     }
 
     /**
